@@ -1,3 +1,5 @@
+# This repository is a fork of https://github.com/karpathy/llm-council, migrated to work with the OpenAI API and updated to accept an OpenAI API key for authentication.
+
 # LLM Council
 
 ![llmcouncil](header.jpg)
@@ -42,20 +44,30 @@ OPENAI_API_KEY=sk-...
 
 Get your API key at [platform.openai.com](https://platform.openai.com/).
 
-### 3. Configure Models (Optional)
+### 3. Configure Models and Other Settings (Optional)
 
-Edit `backend/config.py` to customize the council:
+Configuration has been moved to the `.env` file. You can customize which models
+are in the council and which model acts as the chairman by setting environment
+variables. Example entries for `.env`:
 
-```python
-COUNCIL_MODELS = [
-    "gpt-4.1",
-    "gpt-4o",
-    "gpt-4.1-mini",
-    "gpt-4o-mini",
-]
+```dotenv
+# Comma-separated list of council member models
+COUNCIL_MODELS=gpt-4.1,gpt-4o,gpt-4.1-mini,gpt-4o-mini,gpt-4o-realtime-preview,gpt-5-mini
 
-CHAIRMAN_MODEL = "gpt-4.1"
+# Model used to synthesize the final response
+CHAIRMAN_MODEL=gpt-4.1
+
+# Responses API endpoint (optional)
+OPENAI_API_URL=https://api.openai.com/v1/responses
+
+# Data directory for storing conversations (optional)
+DATA_DIR=data/conversations
 ```
+
+The backend will read these values from the environment and fall back to
+reasonable defaults if a variable is not provided. To override the defaults
+without editing files, export the variables in your shell or edit the `.env`
+file in the project root.
 
 ## Running the Application
 
