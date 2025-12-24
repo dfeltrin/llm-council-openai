@@ -1,4 +1,4 @@
-# This repository is a fork of https://github.com/karpathy/llm-council, migrated to work with the OpenAI API and updated to accept an OpenAI API key for authentication.
+# This repository is a fork of https://github.com/karpathy/llm-council, migrated to work with the OpenAI API
 
 # LLM Council
 
